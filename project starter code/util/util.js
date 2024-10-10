@@ -29,7 +29,7 @@ export async function filterImageFromURL(inputURL) {
       const contentType = response.headers['content-type'];
       if (!contentType.startsWith('image/')) {
         console.log("xxxxx");
-        return response.status(400).send('URL does not point to an image');
+        resolve({statusCode: 400, data:"Error Image"});
       }
 
       const buffer = Buffer.from(response.data);

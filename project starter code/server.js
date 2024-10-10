@@ -37,10 +37,10 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util.js';
     // filterImageFromURL(req.query.image_url);
     filterImageFromURL(req.query.image_url).then((result) => {
       console.log('Đã thành công:', result); // Kết quả khi resolve được gọi
-      res.sendStatus(result.statusCode)
+      res.sendFile(result.data);
     })
     .catch((error) => {
-      res.sendStatus(error.statusCode )
+      res.status(error.statusCode).send('Hình ảnh không tồn tại');
     });
     
     
